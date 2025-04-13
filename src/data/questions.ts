@@ -1,64 +1,63 @@
-import { Question } from '../context/QuizContext';
-
-export const quizQuestions: Question[] = [
-  {
-    id: 1,
-    sentence: "The ___ chased the mouse across the yard, ___ over obstacles along the way.",
-    options: ["cat", "leaping", "dog", "quickly"],
-    correctAnswer: ["cat", "leaping"]
-  },
-  {
-    id: 2,
-    sentence: "She ___ finished her homework before dinner, ___ she had time to relax afterward.",
-    options: ["quickly", "ensuring", "carefully", "because"],
-    correctAnswer: ["quickly", "ensuring"]
-  },
-  {
-    id: 3,
-    sentence: "The ___ running boy was hard to catch, as he ___ between the trees with incredible speed.",
-    options: ["quickly", "darted", "fast", "jumped"],
-    correctAnswer: ["quickly", "darted"]
-  },
-  {
-    id: 4,
-    sentence: "We will go to the market after school to buy ___ vegetables and fruits for the ___.",
-    options: ["fresh", "week", "many", "dinner"],
-    correctAnswer: ["fresh", "week"]
-  },
-  {
-    id: 5,
-    sentence: "Had the car ___ been parked outside yesterday, it would have been an obstacle for others to ___ by.",
-    options: ["red", "drive", "large", "pass"],
-    correctAnswer: ["red", "drive"]
-  },
-  {
-    id: 6,
-    sentence: "Yesterday, we had a ___ discussion about the project, but it ___ into an argument because everyone had ___ opinions on the final ___.",
-    options: ["different", "turned", "quick", "outcome"],
-    correctAnswer: ["different", "turned", "quick", "outcome"]
-  },
-  {
-    id: 7,
-    sentence: "The ___ of the experiment were ___ as the team had anticipated.",
-    options: ["results", "exactly", "outcomes", "surprising"],
-    correctAnswer: ["results", "exactly"]
-  },
-  {
-    id: 8,
-    sentence: "She ___ the book on the shelf after ___ it carefully.",
-    options: ["placed", "examining", "threw", "opening"],
-    correctAnswer: ["placed", "examining"]
-  },
-  {
-    id: 9,
-    sentence: "The ___ was falling ___ as we walked home from school.",
-    options: ["rain", "heavily", "snow", "lightly"],
-    correctAnswer: ["rain", "heavily"]
-  },
-  {
-    id: 10,
-    sentence: "The ___ mountain peak was ___ with snow throughout the year.",
-    options: ["tall", "covered", "distant", "visible"],
-    correctAnswer: ["tall", "covered"]
-  }
-];
+export const questions = [
+    {
+      id: "b28af948-db8b-465e-92e6-3d42534c4533",
+      sentence: "The company's _____________ approach to product development _____________ customer feedback at every stage, _____________ user satisfaction and _____________ a loyal consumer base.",
+      options: ["Incorporated", "User-centric", "Enhancing", "Cultivating"],
+      correctAnswer: ["User-centric", "Incorporated", "Enhancing", "Cultivating"]
+    },
+    {
+      id: "6e6534ea-260a-4c26-96fd-f830b27601fb",
+      sentence: "The _____________ musical performance _____________ elements from various genres, _____________ the audience with its unique sound and _____________ critical acclaim from industry experts.",
+      options: ["Captivating", "Eclectic", "Garnering", "Blended"],
+      correctAnswer: ["Eclectic", "Blended", "Captivating", "Garnering"]
+    },
+    {
+      id: "7186e3da-0384-460a-af19-5a3984758e78",
+      sentence: "The scientist's _____________ research on quantum computing _____________ new possibilities for data processing, _____________ traditional limitations and _____________ the way for groundbreaking technological advancements.",
+      options: ["Pioneering", "Paving", "Overcoming", "Opened up"],
+      correctAnswer: ["Pioneering", "Opened up", "Overcoming", "Paving"]
+    },
+    {
+      id: "10cbe3c2-13bb-4973-a794-18bf309b0791",
+      sentence: "The _____________ implementation of machine learning algorithms in medical diagnostics _____________ early detection of diseases, _____________ treatment outcomes and _____________ the workload of healthcare professionals.",
+      options: ["Improving", "Reducing", "Enabled", "Revolutionary"],
+      correctAnswer: ["Revolutionary", "Enabled", "Improving", "Reducing"]
+    },
+    {
+      id: "71ffe41e-8732-48e6-87f2-f84ea07eb060",
+      sentence: "The _____________ security breach at the tech giant _____________ millions of users' data, _____________ concerns about online privacy and _____________ calls for stricter regulations.",
+      options: ["Raising", "Massive", "Prompting", "Compromised"],
+      correctAnswer: ["Massive", "Compromised", "Raising", "Prompting"]
+    },
+    {
+      id: "48b9b4bd-5c2c-4c25-92c0-ce453b14e8d7",
+      sentence: "The _____________ educational reform _____________ a more inclusive curriculum, _____________ equal opportunities for all students and _____________ the overall quality of public schooling.",
+      options: ["Comprehensive", "Enhancing", "Implemented", "Promoting"],
+      correctAnswer: ["Comprehensive", "Implemented", "Promoting", "Enhancing"]
+    },
+    {
+      id: "ed5e6e2d-8408-406e-be32-777ac26460e2",
+      sentence: "The company's _____________ commitment to sustainability _____________ eco-friendly practices across all departments, _____________ its carbon footprint and _____________ a model for corporate responsibility.",
+      options: ["Implemented", "Setting", "Unwavering", "Reducing"],
+      correctAnswer: ["Unwavering", "Implemented", "Reducing", "Setting"]
+    },
+    {
+      id: "936eccaa-2f3b-4322-a3d3-ceabf2219dc5",
+      sentence: "The _____________ implementation of artificial intelligence in healthcare _____________ patient outcomes, _____________ the workload of medical professionals and _____________ new avenues for personalized treatment.",
+      options: ["Opening", "Improved", "Gradual", "Reducing"],
+      correctAnswer: ["Gradual", "Improved", "Reducing", "Opening"]
+    },
+    {
+      id: "d78effdf-88ab-4667-8115-3bfb2baa0a24",
+      sentence: "The _____________ festival _____________ artists from diverse backgrounds, _____________ cultural exchange and _____________ a platform for emerging talents to showcase their work.",
+      options: ["Providing", "Brought together", "Promoting", "International"],
+      correctAnswer: ["International", "Brought together", "Promoting", "Providing"]
+    },
+    {
+      id: "2d08ec76-a253-4f34-bc45-e12ef21b78fb",
+      sentence: "The _____________ implementation of smart city technologies _____________ urban efficiency and sustainability, _____________ quality of life for residents and _____________ a model for future urban development.",
+      options: ["Enhancing", "Improved", "Providing", "Widespread"],
+      correctAnswer: ["Widespread", "Improved", "Enhancing", "Providing"]
+    }
+  ];
+  

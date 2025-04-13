@@ -3,12 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '@/context/QuizContext';
+import sampleQuestions from '@/data/sampleQuestions'; // ✅ Import questions
 
 const Home = () => {
   const navigate = useNavigate();
-  const { setIsQuizStarted } = useQuiz();
+  const { setIsQuizStarted, setQuestions } = useQuiz(); // ✅ Add setQuestions
 
   const handleStartQuiz = () => {
+    setQuestions(sampleQuestions); // ✅ Inject sample questions
     setIsQuizStarted(true);
     navigate('/quiz');
   };
@@ -19,8 +21,8 @@ const Home = () => {
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"></path>
-              <path d="M7 7h.01"></path>
+              <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
+              <path d="M7 7h.01" />
             </svg>
           </div>
           <CardTitle className="text-3xl font-bold">Sentence Construction</CardTitle>
@@ -41,7 +43,7 @@ const Home = () => {
             <div className="text-center">
               <h3 className="font-medium mb-2">Coins</h3>
               <p className="text-lg flex items-center justify-center">
-                <span className="inline-block w-4 h-4 bg-yellow-400 rounded-full mr-1"></span>
+                <span className="inline-block w-4 h-4 bg-yellow-400 rounded-full mr-1" />
                 0
               </p>
             </div>
