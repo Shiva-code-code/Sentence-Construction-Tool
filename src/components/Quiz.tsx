@@ -21,6 +21,7 @@ const Quiz = () => {
     timeLeft,
     setTimeLeft,
     questions,
+    setQuestions,
     isQuizFinished,
     setIsQuizFinished
   } = useQuiz();
@@ -32,44 +33,35 @@ const Quiz = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   useEffect(() => {
-    // Reset selected words when moving to a new question
     setSelectedWords([]);
-    
-    // Extract blanks from the sentence
+
     if (currentQuestion) {
       const sentenceParts = currentQuestion.sentence.split('___');
       const blankCount = sentenceParts.length - 1;
       setBlanks(Array(blankCount).fill(''));
     }
-    
-    // Reset timer
+
     setTimeLeft(30);
-    
-    // Reset progress bar
     setProgressValue(100);
-  }, [currentQuestionIndex, currentQuestion, setSelectedWords, setTimeLeft]);
+  }, [currentQuestionIndex, currentQuestion]);
 
   useEffect(() => {
-    // Timer logic
     const timer = setInterval(() => {
-      // Here's the fix: Use a local variable to calculate the new time
       const newTime = timeLeft <= 1 ? 0 : timeLeft - 1;
       setTimeLeft(newTime);
-      
+
       if (newTime <= 0) {
         clearInterval(timer);
         handleTimeUp();
       }
-      
-      // Update progress bar
-      setProgressValue((timeLeft / 30) * 100);
+
+      setProgressValue((newTime / 30) * 100);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, setTimeLeft]);
+  }, [timeLeft]);
 
   useEffect(() => {
-    // Check if answer is complete
     if (currentQuestion && selectedWords.length === currentQuestion.correctAnswer.length) {
       setIsAnswerComplete(true);
     } else {
@@ -79,22 +71,19 @@ const Quiz = () => {
 
   const handleWordSelection = (word: string) => {
     if (selectedWords.includes(word)) {
-      // If word is already selected, remove it
       setSelectedWords(selectedWords.filter(w => w !== word));
     } else if (selectedWords.length < blanks.length) {
-      // Add the word if there's still room
       setSelectedWords([...selectedWords, word]);
     }
   };
 
   const handleTimeUp = () => {
-    // Save current answer even if incomplete
-    setUserAnswers({
+    const updatedAnswers = {
       ...userAnswers,
       [currentQuestionIndex]: [...selectedWords]
-    });
+    };
+    setUserAnswers(updatedAnswers);
 
-    // Move to next question or finish quiz
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -103,18 +92,17 @@ const Quiz = () => {
   };
 
   const handleNext = () => {
-    // Check answer correctness
     const isCorrect = areAnswersCorrect();
-    
-    // Save user's answer
-    setUserAnswers({
+
+    const updatedAnswers = {
       ...userAnswers,
       [currentQuestionIndex]: [...selectedWords]
-    });
-    
-    // Update score if correct
+    };
+    setUserAnswers(updatedAnswers);
+
     if (isCorrect) {
-      setScore(score + 1);
+      const newScore = score + 1;
+      setScore(newScore);
       toast({
         title: "Correct!",
         description: "Good job! Moving to next question.",
@@ -127,8 +115,7 @@ const Quiz = () => {
         variant: "destructive",
       });
     }
-    
-    // Move to next question or finish quiz
+
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -149,15 +136,11 @@ const Quiz = () => {
 
   const areAnswersCorrect = () => {
     if (!currentQuestion) return false;
-    
-    // If number of selected words doesn't match required answers, it's wrong
     if (selectedWords.length !== currentQuestion.correctAnswer.length) return false;
-    
-    // Check if all selected words match correct answers and are in the right order
+
     for (let i = 0; i < selectedWords.length; i++) {
       if (selectedWords[i] !== currentQuestion.correctAnswer[i]) return false;
     }
-    
     return true;
   };
 
@@ -168,34 +151,29 @@ const Quiz = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-[975px] mx-auto p-4">
-        {/* Timer and progress bar */}
         <QuizTimer 
           timeLeft={timeLeft}
           progressValue={progressValue}
           handleQuit={handleQuit}
         />
 
-        {/* Quiz content */}
         <div className="bg-white rounded-lg p-6 shadow-md">
           <h2 className="text-xl text-center mb-6">
             Select the missing words in the correct order
           </h2>
 
-          {/* Sentence with blanks */}
           <QuizSentence 
             sentence={currentQuestion.sentence}
             selectedWords={selectedWords}
             setSelectedWords={setSelectedWords}
           />
 
-          {/* Word options */}
           <WordOptions 
             options={currentQuestion.options}
             selectedWords={selectedWords}
             handleWordSelection={handleWordSelection}
           />
-          
-          {/* Navigation */}
+
           <div className="flex justify-end mt-4">
             <Button 
               onClick={handleNext} 
@@ -209,8 +187,7 @@ const Quiz = () => {
             </Button>
           </div>
         </div>
-        
-        {/* Question counter */}
+
         <div className="text-right mt-2">
           <span className="text-sm text-gray-500">
             {currentQuestionIndex + 1}/{questions.length}

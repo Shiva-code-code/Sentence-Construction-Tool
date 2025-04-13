@@ -1,6 +1,6 @@
+// QuizContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-// Define types for our quiz data
 export interface Question {
   id: number;
   sentence: string;
@@ -10,21 +10,21 @@ export interface Question {
 
 interface QuizContextType {
   currentQuestionIndex: number;
-  setCurrentQuestionIndex: (index: number) => void;
+  setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
   score: number;
-  setScore: (score: number) => void;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
   selectedWords: string[];
-  setSelectedWords: (words: string[]) => void;
+  setSelectedWords: React.Dispatch<React.SetStateAction<string[]>>;
   userAnswers: Record<number, string[]>;
-  setUserAnswers: (answers: Record<number, string[]>) => void;
+  setUserAnswers: React.Dispatch<React.SetStateAction<Record<number, string[]>>>;
   timeLeft: number;
-  setTimeLeft: (time: number) => void;
+  setTimeLeft: React.Dispatch<React.SetStateAction<number>>;
   questions: Question[];
-  setQuestions: (questions: Question[]) => void;
+  setQuestions: React.Dispatch<React.SetStateAction<Question[]>>;
   isQuizStarted: boolean;
-  setIsQuizStarted: (isStarted: boolean) => void;
+  setIsQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
   isQuizFinished: boolean;
-  setIsQuizFinished: (isFinished: boolean) => void;
+  setIsQuizFinished: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const QuizContext = createContext<QuizContextType | undefined>(undefined);
@@ -39,7 +39,7 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   const [isQuizStarted, setIsQuizStarted] = useState(false);
   const [isQuizFinished, setIsQuizFinished] = useState(false);
 
-  const value = {
+  const value: QuizContextType = {
     currentQuestionIndex,
     setCurrentQuestionIndex,
     score,
@@ -63,7 +63,7 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
 
 export const useQuiz = () => {
   const context = useContext(QuizContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useQuiz must be used within a QuizProvider');
   }
   return context;
