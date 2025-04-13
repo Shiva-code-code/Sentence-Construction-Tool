@@ -40,16 +40,3 @@
 .read-the-docs {
   color: #888;
 }
-
-@keyframes rotateCoin {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-
-.animate-rotateCoin {
-  animation: rotateCoin 2s linear infinite;
-}
