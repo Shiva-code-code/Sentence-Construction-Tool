@@ -162,7 +162,7 @@ const Quiz = () => {
           <QuizSentence
             sentence={currentQuestion.sentence}
             selectedWords={selectedWords}
-            setSelectedWords={setSelectedWords}
+            
           />
 
           <WordOptions

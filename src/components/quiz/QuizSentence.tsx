@@ -1,34 +1,40 @@
-import React from 'react';
+import React from "react";
 
-interface QuizSentenceProps {
+interface Props {
   sentence: string;
   selectedWords: string[];
-  setSelectedWords: (words: string[]) => void;
 }
 
-const QuizSentence = ({ sentence, selectedWords, setSelectedWords }: QuizSentenceProps) => {
-  const sentenceParts = sentence.split('___');
-  
+const QuizSentence: React.FC<Props> = ({ sentence, selectedWords }) => {
+  const parts = sentence.split("___");
+
+  // Split the sentence by line breaks to preserve new lines
+  const lines = sentence.split(/\n|(?<=\.)\s/g); // Handles newline or ". "
+
+  let wordIndex = 0;
+
   return (
-    <div className="text-lg text-center mb-8">
-      {sentenceParts.map((part, index) => (
-        <React.Fragment key={index}>
-          {part}
-          {index < sentenceParts.length - 1 && (
-            <span 
-              className="inline-block mx-1 px-3 py-1 border-b-2 border-gray-400 min-w-20 text-center"
-              onClick={() => {
-                if (selectedWords[index]) {
-                  // Remove word if clicked
-                  setSelectedWords(selectedWords.filter((_, i) => i !== index));
-                }
-              }}
-            >
-              {selectedWords[index] || ''}
-            </span>
-          )}
-        </React.Fragment>
-      ))}
+    <div className="space-y-4">
+      {lines.map((line, lineIndex) => {
+        const lineParts = line.split("___");
+        return (
+          <div
+            key={lineIndex}
+            className="text-lg text-center leading-8 flex flex-wrap justify-center gap-1 px-4"
+          >
+            {lineParts.map((part, i) => (
+              <React.Fragment key={i}>
+                <span>{part}</span>
+                {i < lineParts.length - 1 && (
+                  <span className="underline min-w-[80px] inline-block text-indigo-600 font-semibold">
+                    {selectedWords[wordIndex++] || "_______"}
+                  </span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        );
+      })}
     </div>
   );
 };
