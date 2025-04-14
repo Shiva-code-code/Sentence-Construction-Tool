@@ -3,7 +3,7 @@
 An interactive sentence construction quiz tool built for the **Frontend Intern** role at **CA MONK**. This application tests users' ability to correctly arrange words into meaningful sentences under a time limit.
 
 ## 🔗 Live Demo
-[Click to View Deployed App](https://your-deployed-app.vercel.app)
+[Click to View Deployed App](https://sentence-construction-assignment.vercel.app)
 
 ## 🎯 Features
 - Sentence construction with dynamic blanks.
