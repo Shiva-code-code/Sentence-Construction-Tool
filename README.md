@@ -21,7 +21,7 @@ An interactive sentence construction quiz tool built for the **Frontend Intern**
 - **Framework:** React + Vite
 - **Styling:** Tailwind CSS
 - **Language:** TypeScript
-- **Components:** shadcn/ui (optional)
+- **Components:** shadcn/ui 
 - **State Management:** React Context API
 - **Deployment:** Vercel
 
@@ -95,4 +95,4 @@ JSON server runs at: `http://localhost:3001/questions`
 
 ---
 
-© 2024 – Built with 💙 by [Shiva](https://github.com/Shiva-code-code)
+© 2025 – Built with 💙 by [Shiva](https://github.com/Shiva-code-code)
